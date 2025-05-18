@@ -1,33 +1,13 @@
-import random
-
-comp_list = []
-def randomSelection():
-    i = 0
-    while i < 5:
-        i += 1
-        comp_list.append(random.randrange(1, 10))
-    print(comp_list)
-
-
-def input_check():
-    while True:
-        try:
-            number = int(input("Wybierz liczbę od 1 do 9: "))
-            if number in range(1, 10):
-                return number
-            else:
-                print("Podana liczba jest poza zakresem. Spróbuj jeszcze raz.")
-        except ValueError:
-            print("To nie jest liczba. Spróbuj jeszcze raz.")
+import funkcje
 
 def main():
-    randomSelection()
+    comp_list = funkcje.randomSelection()
     i = 0
     for i in range(10):
         player_list = []
         check_list = []
         for n in range(5):
-            player_answer = input_check()
+            player_answer = funkcje.input_check()
             if player_answer == comp_list[n]:
                 check_list.append(1)
             elif player_answer in comp_list:
@@ -41,7 +21,7 @@ def main():
             print("Gratuluję! Wygrana!")
             return
         else:
-            print("Niestety nie. W rundzie ", str(i), " nie zgadłeś: ")
+            print("Niestety nie. W rundzie ", str(i+1), " nie zgadłeś: ")
             print(player_list)
             print(check_list)
             print("Spróbuj jeszcze raz")
